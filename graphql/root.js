@@ -1,6 +1,7 @@
 import { loadEnterprise, saveEnterprise } from '../filesInteraction.js';
 
 const updateEnterprise = (input) => {
+  console.log('updateEnterprise', input.vacancies);
   const vacancies = input.vacancies.map((vacancy, index) => ({
     ...vacancy,
     id: index + 1,
@@ -13,7 +14,9 @@ const updateEnterprise = (input) => {
 };
 
 const root = {
-  getEnterprise: ({ id }) => loadEnterprise(id),
+  getEnterprise: ({ id }) => {
+    return loadEnterprise(id);
+  },
   updateEnterprise: ({ input }) => {
     const enterprise = updateEnterprise(input);
     const resultMessage = { content: saveEnterprise(enterprise) };

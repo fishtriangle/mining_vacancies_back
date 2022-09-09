@@ -14,6 +14,7 @@ const schema = buildSchema(`
     vacancy: String
     requirements: String
     docs: String
+    salary: String
   }
   
   input EnterpriseInput {
@@ -26,6 +27,7 @@ const schema = buildSchema(`
     vacancy: String!
     requirements: String
     docs: String
+    salary: String
   }
   
   type Query {
