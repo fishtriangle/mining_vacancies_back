@@ -1,9 +1,12 @@
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import cors from 'cors';
+import * as dotenv from 'dotenv';
 
 import schema from './schemas/schema.js';
 import rootValue from './graphql/root.js';
+
+dotenv.config();
 
 const app = express();
 
@@ -18,4 +21,5 @@ app.use(
   })
 );
 
+// eslint-disable-next-line no-undef
 app.listen(process.env.PORT, () => console.log('Server started on port 5000'));
