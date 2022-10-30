@@ -1,3 +1,3 @@
-import { outputServer } from './src/server.js';
+import outputServer from './src/server.js';
 
 outputServer();

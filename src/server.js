@@ -11,7 +11,7 @@ const { typeDefs, resolvers } = schema;
 //   server.listen().then(({ url }) => console.log(`Server listen at: ${url}`));
 // };
 
-export const outputServer = async () => {
+const outputServer = async () => {
   const server = new ApolloServer({ typeDefs, resolvers });
   const { url } = await startStandaloneServer(server, {
     context: () => context,
@@ -19,3 +19,5 @@ export const outputServer = async () => {
   });
   console.log(`🚀  Server ready at ${url}`);
 };
+
+export default outputServer;
