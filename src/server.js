@@ -5,4 +5,6 @@ import context from './context.js';
 const { typeDefs, resolvers } = schema;
 const server = new ApolloServer({ typeDefs, resolvers, context });
 
-server.listen().then(({ url }) => console.log(`Server listen at: ${url}`));
+export const outputServer = () => {
+  server.listen().then(({ url }) => console.log(`Server listen at: ${url}`));
+};
