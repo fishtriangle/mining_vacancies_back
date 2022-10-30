@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Enterprise {
+  id Int @id @default(autoincrement())
+  title String @unique
+  description String @default("Информация отсутствует")
+  logo String @default("Информация отсутствует")
+  vacancies Vacancy[]
+  photos Photo[]
+  marker Marker?
+  contacts String @default("Информация отсутствует")
+}
+
+model Vacancy {
+  id Int @id @default(autoincrement())
+  vacancy String @default("Информация отсутствует")
+  requirements String @default("Информация отсутствует")
+  docs String @default("Информация отсутствует")
+  salary String @default("Информация отсутствует")
+  author Enterprise @relation(fields: [authorId], references: [id])
+  authorId Int
+}
+
+model Photo {
+  id Int @id @default(autoincrement())
+  small String @default("Информация отсутствует")
+  large String @default("Информация отсутствует")
+  alt String @default("Информация отсутствует")
+  author Enterprise @relation(fields: [authorId], references: [id])
+  authorId Int
+}
+
+model Marker {
+  id Int @id
+  value String @default("Информация отсутствует")
+  top Int @default(0)
+  left Int @default(0)
+  corner String @default("Информация отсутствует")
+  author Enterprise @relation(fields: [id], references: [id])
+}
+
+model News {
+  id Int @id @default(autoincrement())
+  date DateTime @default(now())
+  title String @unique
+  description String @default("Информация отсутствует")
+  photos NewsPhoto[]
+}
+
+model NewsPhoto {
+  id Int @id @default(autoincrement())
+  small String @default("Информация отсутствует")
+  large String @default("Информация отсутствует")
+  alt String @default("Информация отсутствует")
+  news News @relation(fields: [newsId], references: [id])
+  newsId Int
+}
