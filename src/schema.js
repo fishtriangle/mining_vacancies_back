@@ -3,7 +3,6 @@
  * @typedef { import("@prisma/client").UserCreateArgs } UserCreateArgs
  */
 
-import { gql } from 'apollo-server';
 import sharp from 'sharp';
 import {
   convertImgToLarge,
@@ -17,7 +16,7 @@ const mimo = {
   jpg: 'data:image/jpg;base64',
 };
 
-const typeDefs = gql`
+const typeDefs = `#graphql
   type Enterprise {
     id: Int!
     title: String
