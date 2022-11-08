@@ -223,6 +223,14 @@ const resolvers = {
         await context.prisma.enterprise.create({
           data: {
             title: args.input.title,
+            marker: {
+              create: {
+                value: args.input.title,
+                top: 1000,
+                left: 1000,
+                corner: 'top-left',
+              },
+            },
           },
         });
 

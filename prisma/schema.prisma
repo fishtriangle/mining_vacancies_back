@@ -45,7 +45,7 @@ model Marker {
   value String @default("Информация отсутствует")
   top Int @default(0)
   left Int @default(0)
-  corner String @default("Информация отсутствует")
+  corner String @default("top-left")
   author Enterprise @relation(fields: [id], references: [id])
 }
 
